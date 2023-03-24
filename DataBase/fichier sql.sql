@@ -27,10 +27,16 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS Ticket (
   idTicket INT NOT NULL AUTO_INCREMENT,
   film_idfilm INT NOT NULL,
+  Client_idClient INT NOT NULL,
   PRIMARY KEY (idTicket),
   CONSTRAINT fk_Ticket_film1
     FOREIGN KEY (film_idfilm)
     REFERENCES film (idfilm)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_Ticket1_Client
+    FOREIGN KEY (Client_idClient)
+    REFERENCES Client (idClient)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -44,13 +50,8 @@ CREATE TABLE IF NOT EXISTS Client (
   username VARCHAR(45) NULL,
   adresse VARCHAR(50) NULL,
   MDP VARCHAR(100) NOT NULL,
-  Ticket_idTicket INT NOT NULL,
-  PRIMARY KEY (idClient),
-  CONSTRAINT fk_Client_Ticket1
-    FOREIGN KEY (Ticket_idTicket)
-    REFERENCES Ticket (idTicket)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (idClient)
+  )
 ENGINE = InnoDB;
 
 
