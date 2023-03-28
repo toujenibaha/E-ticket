@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Ticket (
     ON UPDATE NO ACTION,
   CONSTRAINT fk_Ticket1_Client
     FOREIGN KEY (Client_idClient)
-    REFERENCES Client (idClient)
+    REFERENCES Cclient (idClient)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -87,17 +87,17 @@ CREATE TABLE IF NOT EXISTS plannifier (
   salle_idsalle INT NOT NULL,
   id_plan INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id_plan),
-  CONSTRAINT fk_film_has_Agent_film1
+  CONSTRAINT fk_film
     FOREIGN KEY (film_idfilm)
     REFERENCES film (idfilm)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-  CONSTRAINT fk_film_has_Agent_Agent1
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_Agent
     FOREIGN KEY (Agent_idAgent)
     REFERENCES Agent (idAgent)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_plannifier_salle
+  CONSTRAINT fk_salle
     FOREIGN KEY (salle_idsalle)
     REFERENCES salle(idsalle)
     ON DELETE NO ACTION
